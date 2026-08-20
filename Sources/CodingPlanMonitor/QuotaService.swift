@@ -84,6 +84,7 @@ enum GLMService {
         return ProviderUsage(
             fiveHour: fiveHour?.window,
             weekly: weekly?.window,
+            monthly: nil,
             mcp: mcp.flatMap { item in
                 guard let used = item.currentValue, let total = item.usage else { return nil }
                 return MCPUsage(used: used, total: total, remaining: item.remaining ?? max(0, total - used))
@@ -117,11 +118,35 @@ enum KimiService {
         }
 
         let decoded = try JSONDecoder().decode(KimiUsagesResponse.self, from: data)
-        let fiveHour = decoded.limits?.compactMap(\.detail).first?.window
+        // 5 小时窗口按 window 元数据识别（300 分钟），兜底取第一个窗口
+        let fiveHourItem = decoded.limits?.first {
+            $0.window?.duration == 300 && $0.window?.timeUnit == "TIME_UNIT_MINUTE"
+        } ?? decoded.limits?.first
+        let fiveHour = fiveHourItem?.detail?.window
         let weekly = decoded.usage?.window
         guard fiveHour != nil || weekly != nil else {
             throw QuotaServiceError.invalidResponse
         }
-        return ProviderUsage(fiveHour: fiveHour, weekly: weekly, mcp: nil, level: nil)
+        // totalQuota 可能为空对象（未开通每月额度时不返回数据），limit 缺失则视为无
+        let monthly = decoded.totalQuota.flatMap { quota in
+            (quota.limit?.value ?? 0) > 0 ? quota.window : nil
+        }
+        return ProviderUsage(
+            fiveHour: fiveHour,
+            weekly: weekly,
+            monthly: monthly,
+            mcp: nil,
+            level: Self.normalizeLevel(decoded.user?.membership?.level)
+        )
+    }
+
+    /// "LEVEL_INTERMEDIATE" → "intermediate"
+    private static func normalizeLevel(_ level: String?) -> String? {
+        guard let level, !level.isEmpty else { return nil }
+        var text = level
+        if let range = text.range(of: #"^LEVEL[_ ]"#, options: .regularExpression) {
+            text.removeSubrange(range)
+        }
+        return text.lowercased()
     }
 }

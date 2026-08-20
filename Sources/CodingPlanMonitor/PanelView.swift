@@ -153,16 +153,25 @@ private struct ProviderSection: View {
                     icon: "clock",
                     title: "5 小时额度",
                     percentage: usage?.fiveHour?.percentage,
-                    subtitle: vm.fiveHourSubtitle(usage?.fiveHour),
-                    onToggle: { vm.showCountdown.toggle() }
+                    subtitle: vm.fiveHourSubtitle(usage?.fiveHour, key: "\(provider.rawValue)-fiveHour"),
+                    onToggle: { vm.toggleCountdown("\(provider.rawValue)-fiveHour") }
                 )
                 if let weekly = usage?.weekly {
                     PercentageRow(
                         icon: "calendar",
                         title: "每周额度",
                         percentage: weekly.percentage,
-                        subtitle: vm.weeklySubtitle(weekly),
-                        onToggle: { vm.showCountdown.toggle() }
+                        subtitle: vm.weeklySubtitle(weekly, key: "\(provider.rawValue)-weekly"),
+                        onToggle: { vm.toggleCountdown("\(provider.rawValue)-weekly") }
+                    )
+                }
+                if let monthly = usage?.monthly {
+                    PercentageRow(
+                        icon: "calendar.badge.clock",
+                        title: "每月总额度",
+                        percentage: monthly.percentage,
+                        subtitle: "",
+                        onToggle: {}
                     )
                 }
                 if let mcp = usage?.mcp {

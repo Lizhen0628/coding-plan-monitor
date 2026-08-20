@@ -1,0 +1,10 @@
+# SwiftPM / Xcode build artifacts
+.build/
+build/
+DerivedData/
+
+# App bundles (build outputs)
+*.app/
+
+# macOS
+.DS_Store

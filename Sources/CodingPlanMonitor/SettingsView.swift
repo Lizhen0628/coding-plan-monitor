@@ -16,9 +16,9 @@ struct SettingsView: View {
                     .font(.caption)
             }
             Section("Kimi Coding（月之暗面）") {
-                SecureField("API Key", text: $vm.kimiAPIKey)
+                SecureField("API Key（sk-kimi-…）", text: $vm.kimiAPIKey)
                     .textFieldStyle(.roundedBorder)
-                Link("获取 API Key →", destination: URL(string: "https://platform.moonshot.cn/console/api-keys")!)
+                Link("获取 API Key →", destination: URL(string: "https://www.kimi.com/code/console")!)
                     .font(.caption)
             }
             Section("刷新") {

@@ -27,8 +27,8 @@ final class MonitorViewModel: ObservableObject {
     @Published private(set) var errors: [Provider: String] = [:]
     @Published private(set) var lastRefresh: Date?
     @Published private(set) var isLoading = false
-    /// 副标题显示模式：false = 重置时间点，true = 倒计时（点击切换）
-    @Published var showCountdown = false
+    /// 处于倒计时显示模式的行（key 为「供应商-窗口」，点击切换），未包含的行显示重置时间点
+    @Published var countdownRows: Set<String> = []
 
     @AppStorage("glmAPIKey") var glmAPIKey = ""
     @AppStorage("kimiAPIKey") var kimiAPIKey = ""
@@ -126,10 +126,23 @@ final class MonitorViewModel: ObservableObject {
 
     // MARK: - 文案
 
-    /// 5 小时窗口副标题
-    func fiveHourSubtitle(_ window: QuotaWindow?) -> String {
+    /// 切换某一行的重置时间显示模式（时间点 ↔ 倒计时），按行独立
+    func toggleCountdown(_ key: String) {
+        if countdownRows.contains(key) {
+            countdownRows.remove(key)
+        } else {
+            countdownRows.insert(key)
+        }
+    }
+
+    private func isCountdown(_ key: String) -> Bool {
+        countdownRows.contains(key)
+    }
+
+    /// 5 小时窗口副标题：默认显示重置时间点，点击切换为倒计时
+    func fiveHourSubtitle(_ window: QuotaWindow?, key: String) -> String {
         guard let date = window?.resetDate else { return "" }
-        if showCountdown { return countdownText(to: date) }
+        if isCountdown(key) { return countdownText(to: date) }
         let calendar = Calendar.current
         let time = date.formatted(date: .omitted, time: .shortened)
         if calendar.isDateInToday(date) {
@@ -140,10 +153,10 @@ final class MonitorViewModel: ObservableObject {
         return "\(date.formatted(.dateTime.month(.defaultDigits).day())) \(time) 重置"
     }
 
-    /// 每周窗口副标题
-    func weeklySubtitle(_ window: QuotaWindow?) -> String {
+    /// 每周窗口副标题：默认显示倒计时，点击切换为重置时间点
+    func weeklySubtitle(_ window: QuotaWindow?, key: String) -> String {
         guard let date = window?.resetDate else { return "" }
-        if showCountdown {
+        if isCountdown(key) {
             let time = date.formatted(date: .abbreviated, time: .shortened)
             return "\(time) 重置"
         }
@@ -165,6 +178,7 @@ final class MonitorViewModel: ObservableObject {
 }
 
 private extension Provider {
+    @MainActor
     func apiKeyIsEmpty(_ vm: MonitorViewModel) -> Bool {
         vm.apiKey(for: self).trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
