@@ -1,0 +1,346 @@
+{
+  "builtTestProducts" : [
+
+  ],
+  "copyCommands" : {
+
+  },
+  "explicitTargetDependencyImportCheckingMode" : {
+    "none" : {
+
+    }
+  },
+  "generatedSourceTargetSet" : [
+
+  ],
+  "pluginDescriptions" : [
+
+  ],
+  "swiftCommands" : {
+    "C.GLMMonitor-arm64-apple-macosx-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "fileList" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/sources",
+      "importPath" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/Modules",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/GLMMonitorApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/Models.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/MonitorViewModel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/PanelView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/QuotaService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/SettingsView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/sources"
+        }
+      ],
+      "isLibrary" : false,
+      "moduleName" : "GLMMonitor",
+      "moduleOutputPath" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/Modules/GLMMonitor.swiftmodule",
+      "objects" : [
+        "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/GLMMonitorApp.swift.o",
+        "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/Models.swift.o",
+        "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/MonitorViewModel.swift.o",
+        "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/PanelView.swift.o",
+        "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/QuotaService.swift.o",
+        "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/SettingsView.swift.o"
+      ],
+      "otherArguments" : [
+        "-target",
+        "arm64-apple-macosx14.0",
+        "-incremental",
+        "-enable-batch-mode",
+        "-serialize-diagnostics",
+        "-index-store-path",
+        "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/index/store",
+        "-Onone",
+        "-enable-testing",
+        "-j16",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+        "-module-cache-path",
+        "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-Xfrontend",
+        "-entry-point-function-name",
+        "-Xfrontend",
+        "GLMMonitor_main",
+        "-swift-version",
+        "6",
+        "-plugin-path",
+        "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-g",
+        "-Xcc",
+        "-isysroot",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+        "-Xcc",
+        "-F",
+        "-Xcc",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-Xcc",
+        "-fPIC",
+        "-Xcc",
+        "-g",
+        "-package-name",
+        "glm_monitor"
+      ],
+      "outputFileMapPath" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/output-file-map.json",
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/GLMMonitorApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/Models.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/MonitorViewModel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/PanelView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/QuotaService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/SettingsView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/Modules/GLMMonitor.swiftmodule"
+        }
+      ],
+      "prepareForIndexing" : false,
+      "sources" : [
+        "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/GLMMonitorApp.swift",
+        "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/Models.swift",
+        "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/MonitorViewModel.swift",
+        "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/PanelView.swift",
+        "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/QuotaService.swift",
+        "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/SettingsView.swift"
+      ],
+      "tempsPath" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build",
+      "wholeModuleOptimization" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "swiftTargetScanArgs" : {
+    "GLMMonitor" : [
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "-module-name",
+      "GLMMonitor",
+      "-package-name",
+      "glm_monitor",
+      "-c",
+      "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/GLMMonitorApp.swift",
+      "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/Models.swift",
+      "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/MonitorViewModel.swift",
+      "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/PanelView.swift",
+      "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/QuotaService.swift",
+      "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/SettingsView.swift",
+      "-I",
+      "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/Modules",
+      "-target",
+      "arm64-apple-macosx14.0",
+      "-incremental",
+      "-enable-batch-mode",
+      "-serialize-diagnostics",
+      "-index-store-path",
+      "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/index/store",
+      "-Onone",
+      "-enable-testing",
+      "-j16",
+      "-DSWIFT_PACKAGE",
+      "-DDEBUG",
+      "-DSWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE",
+      "-module-cache-path",
+      "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/ModuleCache",
+      "-parseable-output",
+      "-Xfrontend",
+      "-entry-point-function-name",
+      "-Xfrontend",
+      "GLMMonitor_main",
+      "-swift-version",
+      "6",
+      "-plugin-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/host/plugins/testing",
+      "-sdk",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-F",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-I",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-L",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+      "-g",
+      "-Xcc",
+      "-isysroot",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.5.sdk",
+      "-Xcc",
+      "-F",
+      "-Xcc",
+      "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+      "-Xcc",
+      "-fPIC",
+      "-Xcc",
+      "-g",
+      "-package-name",
+      "glm_monitor",
+      "-driver-use-frontend-path",
+      "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    ]
+  },
+  "targetDependencyMap" : {
+    "GLMMonitor" : [
+
+    ]
+  },
+  "testDiscoveryCommands" : {
+
+  },
+  "testEntryPointCommands" : {
+
+  },
+  "traitConfiguration" : {
+    "default" : {
+
+    }
+  },
+  "writeCommands" : {
+    "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor-entitlement.plist" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<entitlement-plist>"
+        },
+        {
+          "kind" : "virtual",
+          "name" : "<com.apple.security.get-task-allow>"
+        }
+      ],
+      "outputFilePath" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor-entitlement.plist"
+    },
+    "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/sources" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<sources-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/GLMMonitorApp.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/Models.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/MonitorViewModel.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/PanelView.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/QuotaService.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/SettingsView.swift"
+        }
+      ],
+      "outputFilePath" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/sources"
+    },
+    "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.product/Objects.LinkFileList" : {
+      "alwaysOutOfDate" : false,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<link-file-list>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/GLMMonitorApp.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/Models.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/MonitorViewModel.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/PanelView.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/QuotaService.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/SettingsView.swift.o"
+        }
+      ],
+      "outputFilePath" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.product/Objects.LinkFileList"
+    },
+    "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt" : {
+      "alwaysOutOfDate" : true,
+      "inputs" : [
+        {
+          "kind" : "virtual",
+          "name" : "<swift-get-version>"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+        }
+      ],
+      "outputFilePath" : "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/swift-version--58304C5D6DBC2206.txt"
+    }
+  }
+}

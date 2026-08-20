@@ -1,0 +1,47 @@
+{
+  "": {
+    "swift-dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/primary.swiftdeps"
+  },
+  "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/GLMMonitorApp.swift": {
+    "dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/GLMMonitorApp.d",
+    "object": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/GLMMonitorApp.swift.o",
+    "swiftmodule": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/GLMMonitorApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/GLMMonitorApp.swiftdeps",
+    "diagnostics": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/GLMMonitorApp.dia"
+  },
+  "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/Models.swift": {
+    "dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/Models.d",
+    "object": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/Models.swift.o",
+    "swiftmodule": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/Models~partial.swiftmodule",
+    "swift-dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/Models.swiftdeps",
+    "diagnostics": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/Models.dia"
+  },
+  "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/MonitorViewModel.swift": {
+    "dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/MonitorViewModel.d",
+    "object": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/MonitorViewModel.swift.o",
+    "swiftmodule": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/MonitorViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/MonitorViewModel.swiftdeps",
+    "diagnostics": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/MonitorViewModel.dia"
+  },
+  "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/PanelView.swift": {
+    "dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/PanelView.d",
+    "object": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/PanelView.swift.o",
+    "swiftmodule": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/PanelView~partial.swiftmodule",
+    "swift-dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/PanelView.swiftdeps",
+    "diagnostics": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/PanelView.dia"
+  },
+  "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/QuotaService.swift": {
+    "dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/QuotaService.d",
+    "object": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/QuotaService.swift.o",
+    "swiftmodule": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/QuotaService~partial.swiftmodule",
+    "swift-dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/QuotaService.swiftdeps",
+    "diagnostics": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/QuotaService.dia"
+  },
+  "/Users/lizhen/Projects/glm-monitor/Sources/GLMMonitor/SettingsView.swift": {
+    "dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/SettingsView.d",
+    "object": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/SettingsView.swift.o",
+    "swiftmodule": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/SettingsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/SettingsView.swiftdeps",
+    "diagnostics": "/Users/lizhen/Projects/glm-monitor/.build/arm64-apple-macosx/debug/GLMMonitor.build/SettingsView.dia"
+  }
+}
