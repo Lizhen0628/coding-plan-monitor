@@ -40,8 +40,8 @@ API Key 在 [Kimi Code 控制台](https://www.kimi.com/code/console) 创建。�
 需要 macOS 14+ 和 Swift 工具链（Xcode 或 Command Line Tools）。
 
 ```bash
-./build-app.sh     # 构建 GLMMonitor.app
-open GLMMonitor.app
+./build-app.sh     # 构建 Coding Plan Monitor.app
+open "Coding Plan Monitor.app"
 ```
 
 首次打开后，点击菜单栏图标 → 设置…，填入对应供应商的 API Key 即可（可只填一个，也可两个都填）。

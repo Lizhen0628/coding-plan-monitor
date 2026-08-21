@@ -22,10 +22,11 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: "Coding Plan Monitor"
         INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
         INFOPLIST_KEY_LSUIElement: YES
+        INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         INFOPLIST_KEY_NSHumanReadableCopyright: ""
         CODE_SIGN_ENTITLEMENTS: CodingPlanMonitor.entitlements
         CODE_SIGN_STYLE: Automatic
-        DEVELOPMENT_TEAM: P7AQ8USFDY
+        DEVELOPMENT_TEAM: 2CV6VKVD26
         ENABLE_HARDENED_RUNTIME: YES
         SWIFT_VERSION: "6.0"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
@@ -34,6 +35,6 @@ targets:
         Debug:
           CODE_SIGN_IDENTITY: "-"
         Release:
-          CODE_SIGN_IDENTITY: "Apple Distribution"
+          CODE_SIGN_IDENTITY: "Apple Development"
     scheme:
       gatherCoverageData: false

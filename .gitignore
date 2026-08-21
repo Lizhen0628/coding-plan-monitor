@@ -8,3 +8,9 @@ DerivedData/
 
 # macOS
 .DS_Store
+
+# SwiftPM 工作区元数据
+.swiftpm/
+
+# Xcode 用户状态
+xcuserdata/

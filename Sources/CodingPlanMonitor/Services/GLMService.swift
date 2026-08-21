@@ -1,25 +1,5 @@
 import Foundation
 
-enum QuotaServiceError: LocalizedError {
-    case missingAPIKey
-    case httpError(Int)
-    case apiError(String)
-    case invalidResponse
-
-    var errorDescription: String? {
-        switch self {
-        case .missingAPIKey: return "请先在设置中填入 API Key"
-        case .httpError(let code):
-            if code == 401 || code == 403 {
-                return "API Key 无效或已过期（HTTP \(code)）"
-            }
-            return "请求失败（HTTP \(code)）"
-        case .apiError(let msg): return msg
-        case .invalidResponse: return "响应数据格式异常"
-        }
-    }
-}
-
 // MARK: - GLM（智谱）
 
 enum GLMService {
@@ -94,59 +74,40 @@ enum GLMService {
     }
 }
 
-// MARK: - Kimi（月之暗面）
+// MARK: - GLM（智谱）响应模型
+// GET {base}/api/monitor/usage/quota/limit
 
-enum KimiService {
-    static func fetch(apiKey: String) async throws -> ProviderUsage {
-        let key = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !key.isEmpty else { throw QuotaServiceError.missingAPIKey }
-        guard let url = URL(string: "https://api.kimi.com/coding/v1/usages") else {
-            throw QuotaServiceError.invalidResponse
-        }
+struct QuotaResponse: Decodable {
+    let code: Int?
+    let msg: String?
+    let success: Bool?
+    let data: QuotaData?
+}
 
-        var request = URLRequest(url: url)
-        request.setValue("Bearer \(key)", forHTTPHeaderField: "Authorization")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        request.timeoutInterval = 15
+struct QuotaData: Decodable {
+    let limits: [UsageLimit]
+    let level: String?
+}
 
-        let (data, response) = try await URLSession.shared.data(for: request)
-        guard let http = response as? HTTPURLResponse else {
-            throw QuotaServiceError.invalidResponse
-        }
-        guard http.statusCode == 200 else {
-            throw QuotaServiceError.httpError(http.statusCode)
-        }
+/// GLM 单个限额项。
+/// - TOKENS_LIMIT / CREDIT_LIMIT: token 额度，unit 3 = 5 小时窗口，unit 6 = 每周窗口
+/// - TIME_LIMIT: MCP 每月调用次数（usage 总量 / currentValue 已用 / remaining 剩余）
+struct UsageLimit: Decodable {
+    let type: String
+    let unit: Int?
+    let number: Int?
+    let usage: Int?
+    let currentValue: Int?
+    let remaining: Int?
+    let percentage: Double?
+    /// 毫秒时间戳
+    let nextResetTime: Int64?
 
-        let decoded = try JSONDecoder().decode(KimiUsagesResponse.self, from: data)
-        // 5 小时窗口按 window 元数据识别（300 分钟），兜底取第一个窗口
-        let fiveHourItem = decoded.limits?.first {
-            $0.window?.duration == 300 && $0.window?.timeUnit == "TIME_UNIT_MINUTE"
-        } ?? decoded.limits?.first
-        let fiveHour = fiveHourItem?.detail?.window
-        let weekly = decoded.usage?.window
-        guard fiveHour != nil || weekly != nil else {
-            throw QuotaServiceError.invalidResponse
-        }
-        // totalQuota 可能为空对象（未开通每月额度时不返回数据），limit 缺失则视为无
-        let monthly = decoded.totalQuota.flatMap { quota in
-            (quota.limit?.value ?? 0) > 0 ? quota.window : nil
-        }
-        return ProviderUsage(
-            fiveHour: fiveHour,
-            weekly: weekly,
-            monthly: monthly,
-            mcp: nil,
-            level: Self.normalizeLevel(decoded.user?.membership?.level)
-        )
+    var resetDate: Date? {
+        nextResetTime.map { Date(timeIntervalSince1970: TimeInterval($0) / 1000) }
     }
 
-    /// "LEVEL_INTERMEDIATE" → "intermediate"
-    private static func normalizeLevel(_ level: String?) -> String? {
-        guard let level, !level.isEmpty else { return nil }
-        var text = level
-        if let range = text.range(of: #"^LEVEL[_ ]"#, options: .regularExpression) {
-            text.removeSubrange(range)
-        }
-        return text.lowercased()
+    var window: QuotaWindow {
+        QuotaWindow(percentage: percentage ?? 0, resetDate: resetDate)
     }
 }

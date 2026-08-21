@@ -7,146 +7,176 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2D65AB23D931CAA866BC0C55 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 950B7CB9072AA3D3BD04801E /* PrivacyInfo.xcprivacy */; };
-		34B0531CD4DE8CEA4A932612 /* GLMMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16D4FD727950F74C1DF356A /* GLMMonitorApp.swift */; };
-		3CBE6F124E8D504DB80CC1EC /* MonitorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63DCAE222F8D6D66D70A7C1 /* MonitorViewModel.swift */; };
-		681A2293670E547D957B8DFD /* QuotaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AAE8D507C13101625AD27C /* QuotaService.swift */; };
-		6CE925F8EAD9F5F73198B522 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0FA5153C602CF31841CBC06 /* Assets.xcassets */; };
-		938CE93075DB6D98DCDAE9F6 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E37B22179D8221358C8CFB /* SettingsView.swift */; };
-		B3D2C356855CF5AA3CBD45CD /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5C54A5EB9B88862A3258FC /* Models.swift */; };
-		C6D3C3691473B677949E768C /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D603C37B00A64BF87BF256A /* PanelView.swift */; };
+		18E06ECB45BAB9F66FB8F81D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E14FEA6DC9AC384C7D406A84 /* Assets.xcassets */; };
+		19670FA9918A6A2C925F4673 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED8C835A44CD9AEE1DC3B536 /* Models.swift */; };
+		49532DDA76FF1F8382744539 /* CodingPlanMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8842FABD9A85E62E15B67D4E /* CodingPlanMonitorApp.swift */; };
+		5B171DC2FB0B06A49A952A76 /* MonitorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AAFC420893BD6BE17A8FA7 /* MonitorViewModel.swift */; };
+		5EA2B3A5E882ED3C6B2A341B /* QuotaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44520B9DD3E8A3DAD87F3E83 /* QuotaService.swift */; };
+		6E9165C02FCDB29545FA007F /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 568BE32DB04E784176EE3FF0 /* PanelView.swift */; };
+		9CA97EA013229047828CBF82 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5707DA1B5AAFC2ECCE6F7B46 /* SettingsView.swift */; };
+		B952A3DBD5E66D599A504C6C /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 02424794FED79D3778A777AF /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D603C37B00A64BF87BF256A /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
-		531A3E3023045F860E95C7B3 /* GLMMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GLMMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		950B7CB9072AA3D3BD04801E /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		A0FA5153C602CF31841CBC06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B63DCAE222F8D6D66D70A7C1 /* MonitorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorViewModel.swift; sourceTree = "<group>"; };
-		BC5C54A5EB9B88862A3258FC /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
-		C16D4FD727950F74C1DF356A /* GLMMonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GLMMonitorApp.swift; sourceTree = "<group>"; };
-		C9AAE8D507C13101625AD27C /* QuotaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaService.swift; sourceTree = "<group>"; };
-		F6E37B22179D8221358C8CFB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		02424794FED79D3778A777AF /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		04AAFC420893BD6BE17A8FA7 /* MonitorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonitorViewModel.swift; sourceTree = "<group>"; };
+		44520B9DD3E8A3DAD87F3E83 /* QuotaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaService.swift; sourceTree = "<group>"; };
+		568BE32DB04E784176EE3FF0 /* PanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		5707DA1B5AAFC2ECCE6F7B46 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		87C0A1E0355816B0B8C770AE /* CodingPlanMonitor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CodingPlanMonitor.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8842FABD9A85E62E15B67D4E /* CodingPlanMonitorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodingPlanMonitorApp.swift; sourceTree = "<group>"; };
+		E14FEA6DC9AC384C7D406A84 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ED8C835A44CD9AEE1DC3B536 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		4898262CB5ECEFBBEFF36642 /* Products */ = {
+		34F4C4F91BB2696FBF4A9AEA = {
 			isa = PBXGroup;
 			children = (
-				531A3E3023045F860E95C7B3 /* GLMMonitor.app */,
+				E14FEA6DC9AC384C7D406A84 /* Assets.xcassets */,
+				02424794FED79D3778A777AF /* PrivacyInfo.xcprivacy */,
+				8D86DB07476EB353CAC93670 /* CodingPlanMonitor */,
+				AD6AFA05B75FA059C2F83797 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8D86DB07476EB353CAC93670 /* CodingPlanMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				8842FABD9A85E62E15B67D4E /* CodingPlanMonitorApp.swift */,
+				ED8C835A44CD9AEE1DC3B536 /* Models.swift */,
+				04AAFC420893BD6BE17A8FA7 /* MonitorViewModel.swift */,
+				568BE32DB04E784176EE3FF0 /* PanelView.swift */,
+				44520B9DD3E8A3DAD87F3E83 /* QuotaService.swift */,
+				5707DA1B5AAFC2ECCE6F7B46 /* SettingsView.swift */,
+			);
+			name = CodingPlanMonitor;
+			path = Sources/CodingPlanMonitor;
+			sourceTree = "<group>";
+		};
+		AD6AFA05B75FA059C2F83797 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				87C0A1E0355816B0B8C770AE /* CodingPlanMonitor.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		A94714D0BD0A0C1EDCC51C88 = {
-			isa = PBXGroup;
-			children = (
-				A0FA5153C602CF31841CBC06 /* Assets.xcassets */,
-				950B7CB9072AA3D3BD04801E /* PrivacyInfo.xcprivacy */,
-				BAD4F8165ED427FBB6DCE1F0 /* GLMMonitor */,
-				4898262CB5ECEFBBEFF36642 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		BAD4F8165ED427FBB6DCE1F0 /* GLMMonitor */ = {
-			isa = PBXGroup;
-			children = (
-				C16D4FD727950F74C1DF356A /* GLMMonitorApp.swift */,
-				BC5C54A5EB9B88862A3258FC /* Models.swift */,
-				B63DCAE222F8D6D66D70A7C1 /* MonitorViewModel.swift */,
-				0D603C37B00A64BF87BF256A /* PanelView.swift */,
-				C9AAE8D507C13101625AD27C /* QuotaService.swift */,
-				F6E37B22179D8221358C8CFB /* SettingsView.swift */,
-			);
-			name = GLMMonitor;
-			path = Sources/GLMMonitor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9D4958357F0F27D0C9F1191F /* GLMMonitor */ = {
+		61659C13C02CBA6E11F95711 /* CodingPlanMonitor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 430C770408CF966EC01D15FD /* Build configuration list for PBXNativeTarget "GLMMonitor" */;
+			buildConfigurationList = 65361EB4A6E38D990CC4EFC7 /* Build configuration list for PBXNativeTarget "CodingPlanMonitor" */;
 			buildPhases = (
-				C075541618BCDBC02116BF1C /* Sources */,
-				A0B8A1E8DA3074D9E2782D5B /* Resources */,
+				155643184230D330CF7DA108 /* Sources */,
+				80BFB40A3A3E4BDFC3633CA1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = GLMMonitor;
+			name = CodingPlanMonitor;
 			packageProductDependencies = (
 			);
-			productName = GLMMonitor;
-			productReference = 531A3E3023045F860E95C7B3 /* GLMMonitor.app */;
+			productName = CodingPlanMonitor;
+			productReference = 87C0A1E0355816B0B8C770AE /* CodingPlanMonitor.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		BB6D39D037E005EECF77962B /* Project object */ = {
+		3611680D4689A3F1A65B48C2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
-					9D4958357F0F27D0C9F1191F = {
-						DevelopmentTeam = P7AQ8USFDY;
+					61659C13C02CBA6E11F95711 = {
+						DevelopmentTeam = 2CV6VKVD26;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 5DD23EB0625F72B3ACB39BB5 /* Build configuration list for PBXProject "GLMMonitor" */;
+			buildConfigurationList = A19D91D87A77014A75BEC683 /* Build configuration list for PBXProject "CodingPlanMonitor" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				Base,
 				en,
 			);
-			mainGroup = A94714D0BD0A0C1EDCC51C88;
+			mainGroup = 34F4C4F91BB2696FBF4A9AEA;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 4898262CB5ECEFBBEFF36642 /* Products */;
+			productRefGroup = AD6AFA05B75FA059C2F83797 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9D4958357F0F27D0C9F1191F /* GLMMonitor */,
+				61659C13C02CBA6E11F95711 /* CodingPlanMonitor */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		A0B8A1E8DA3074D9E2782D5B /* Resources */ = {
+		80BFB40A3A3E4BDFC3633CA1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CE925F8EAD9F5F73198B522 /* Assets.xcassets in Resources */,
-				2D65AB23D931CAA866BC0C55 /* PrivacyInfo.xcprivacy in Resources */,
+				18E06ECB45BAB9F66FB8F81D /* Assets.xcassets in Resources */,
+				B952A3DBD5E66D599A504C6C /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C075541618BCDBC02116BF1C /* Sources */ = {
+		155643184230D330CF7DA108 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				34B0531CD4DE8CEA4A932612 /* GLMMonitorApp.swift in Sources */,
-				B3D2C356855CF5AA3CBD45CD /* Models.swift in Sources */,
-				3CBE6F124E8D504DB80CC1EC /* MonitorViewModel.swift in Sources */,
-				C6D3C3691473B677949E768C /* PanelView.swift in Sources */,
-				681A2293670E547D957B8DFD /* QuotaService.swift in Sources */,
-				938CE93075DB6D98DCDAE9F6 /* SettingsView.swift in Sources */,
+				49532DDA76FF1F8382744539 /* CodingPlanMonitorApp.swift in Sources */,
+				19670FA9918A6A2C925F4673 /* Models.swift in Sources */,
+				5B171DC2FB0B06A49A952A76 /* MonitorViewModel.swift in Sources */,
+				6E9165C02FCDB29545FA007F /* PanelView.swift in Sources */,
+				5EA2B3A5E882ED3C6B2A341B /* QuotaService.swift in Sources */,
+				9CA97EA013229047828CBF82 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		41D4E9F8894061DA947A5AEB /* Release */ = {
+		3E543CEBA4F287FA83492045 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
+				CODE_SIGN_ENTITLEMENTS = CodingPlanMonitor.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2CV6VKVD26;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Coding Plan Monitor";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lizhen.CodingPlanMonitor;
+				PRODUCT_NAME = "Coding Plan Monitor";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		4ACCE4A4C3AA7318FA00902F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -202,20 +232,21 @@
 			};
 			name = Release;
 		};
-		921A10925655A6DCF626F560 /* Debug */ = {
+		989DA8DCA99DAF3005370506 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
-				CODE_SIGN_ENTITLEMENTS = GLMMonitor.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_ENTITLEMENTS = CodingPlanMonitor.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P7AQ8USFDY;
+				DEVELOPMENT_TEAM = 2CV6VKVD26;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "GLM 监控";
+				INFOPLIST_KEY_CFBundleDisplayName = "Coding Plan Monitor";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -224,14 +255,14 @@
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lizhen.GLMMonitor;
-				PRODUCT_NAME = GLMMonitor;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lizhen.CodingPlanMonitor;
+				PRODUCT_NAME = "Coding Plan Monitor";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 6.0;
 			};
-			name = Debug;
+			name = Release;
 		};
-		ECBE34C7FB3E0464F89FF83B /* Debug */ = {
+		FCA4343769D42E7C7212EFE4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -294,57 +325,28 @@
 			};
 			name = Debug;
 		};
-		F0B45CFFE2EFA6A6998DA5A7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
-				CODE_SIGN_ENTITLEMENTS = GLMMonitor.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Distribution";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P7AQ8USFDY;
-				ENABLE_HARDENED_RUNTIME = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "GLM 监控";
-				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
-				INFOPLIST_KEY_LSUIElement = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.lizhen.GLMMonitor;
-				PRODUCT_NAME = GLMMonitor;
-				SDKROOT = macosx;
-				SWIFT_VERSION = 6.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		430C770408CF966EC01D15FD /* Build configuration list for PBXNativeTarget "GLMMonitor" */ = {
+		65361EB4A6E38D990CC4EFC7 /* Build configuration list for PBXNativeTarget "CodingPlanMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				921A10925655A6DCF626F560 /* Debug */,
-				F0B45CFFE2EFA6A6998DA5A7 /* Release */,
+				3E543CEBA4F287FA83492045 /* Debug */,
+				989DA8DCA99DAF3005370506 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		5DD23EB0625F72B3ACB39BB5 /* Build configuration list for PBXProject "GLMMonitor" */ = {
+		A19D91D87A77014A75BEC683 /* Build configuration list for PBXProject "CodingPlanMonitor" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ECBE34C7FB3E0464F89FF83B /* Debug */,
-				41D4E9F8894061DA947A5AEB /* Release */,
+				FCA4343769D42E7C7212EFE4 /* Debug */,
+				4ACCE4A4C3AA7318FA00902F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = BB6D39D037E005EECF77962B /* Project object */;
+	rootObject = 3611680D4689A3F1A65B48C2 /* Project object */;
 }

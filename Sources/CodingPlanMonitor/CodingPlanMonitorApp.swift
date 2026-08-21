@@ -55,7 +55,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     private func updateTitle() {
-        statusItem?.button?.title = vm.menuBarTitle
+        statusItem?.button?.title = vm.showMenuBarUsage ? vm.menuBarTitle : ""
     }
 
     @objc private func togglePopover() {

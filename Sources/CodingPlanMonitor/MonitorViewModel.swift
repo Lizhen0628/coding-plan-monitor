@@ -1,71 +1,152 @@
 import Foundation
 import SwiftUI
 
-enum Provider: String, CaseIterable {
-    case glm
-    case kimi
-
-    var displayName: String {
-        switch self {
-        case .glm: return "GLM Coding"
-        case .kimi: return "Kimi Coding"
-        }
-    }
-
-    /// 菜单栏紧凑前缀
-    var shortLabel: String {
-        switch self {
-        case .glm: return "G"
-        case .kimi: return "K"
-        }
-    }
-}
-
 @MainActor
 final class MonitorViewModel: ObservableObject {
-    @Published private(set) var usages: [Provider: ProviderUsage] = [:]
-    @Published private(set) var errors: [Provider: String] = [:]
+    /// key 为账号 ID
+    @Published private(set) var usages: [UUID: ProviderUsage] = [:]
+    @Published private(set) var errors: [UUID: String] = [:]
     @Published private(set) var lastRefresh: Date?
     @Published private(set) var isLoading = false
-    /// 处于倒计时显示模式的行（key 为「供应商-窗口」，点击切换），未包含的行显示重置时间点
+    /// 处于倒计时显示模式的行（key 为「账号ID-窗口」，点击切换），未包含的行显示重置时间点
     @Published var countdownRows: Set<String> = []
 
-    @AppStorage("glmAPIKey") var glmAPIKey = ""
-    @AppStorage("kimiAPIKey") var kimiAPIKey = ""
-    /// "bigmodel"（国内）或 "zai"（国际）
-    @AppStorage("glmPlatform") var glmPlatform = "bigmodel"
+    /// 账号列表（JSON 编码存储）
+    @AppStorage("accountsData") var accountsData = Data()
     @AppStorage("refreshMinutes") var refreshMinutes = 5
+    /// 是否在菜单栏显示用量百分比（关闭后只显示图标）
+    @AppStorage("showMenuBarUsage") var showMenuBarUsage = false
 
-    var glmBaseURL: String {
-        glmPlatform == "zai" ? "https://api.z.ai" : "https://open.bigmodel.cn"
+    // 旧版单 Key 存储（仅用于首次迁移）
+    @AppStorage("glmAPIKey") private var legacyGLMKey = ""
+    @AppStorage("kimiAPIKey") private var legacyKimiKey = ""
+    @AppStorage("glmPlatform") private var legacyGLMPlatform = "bigmodel"
+
+    init() {
+        migrateLegacyKeys()
     }
 
-    func apiKey(for provider: Provider) -> String {
-        switch provider {
-        case .glm: return glmAPIKey
-        case .kimi: return kimiAPIKey
-        }
+    // MARK: - 账号存取
+
+    var accounts: [Account] {
+        get { (try? JSONDecoder().decode([Account].self, from: accountsData)) ?? [] }
+        set { accountsData = (try? JSONEncoder().encode(newValue)) ?? Data() }
     }
 
-    /// 已配置 Key 的供应商
-    var configuredProviders: [Provider] {
-        Provider.allCases.filter {
-            !$0.apiKeyIsEmpty(self)
+    @discardableResult
+    func addAccount(provider: Provider) -> UUID {
+        let account = Account(provider: provider)
+        var list = accounts
+        list.append(account)
+        accounts = list
+        return account.id
+    }
+
+    /// 列表 onMove 拖动排序
+    func moveAccounts(fromOffsets: IndexSet, toOffset: Int) {
+        var list = accounts
+        list.move(fromOffsets: fromOffsets, toOffset: toOffset)
+        accounts = list
+    }
+
+    func removeAccount(_ account: Account) {
+        accounts = accounts.filter { $0.id != account.id }
+        usages[account.id] = nil
+        errors[account.id] = nil
+    }
+
+    /// 拖动排序：把 draggedID 移动到 targetID 的位置（向下拖动时落在其后）
+    func moveAccount(draggedID: UUID, over targetID: UUID) {
+        var list = accounts
+        guard let from = list.firstIndex(where: { $0.id == draggedID }),
+              let originalTo = list.firstIndex(where: { $0.id == targetID }),
+              from != originalTo else { return }
+        let item = list.remove(at: from)
+        let to = list.firstIndex(where: { $0.id == targetID })!
+        list.insert(item, at: from < originalTo ? to + 1 : to)
+        accounts = list
+    }
+
+    /// 供设置界面使用的账号绑定（每次写入都会持久化到 AppStorage）
+    func binding(for id: UUID) -> Binding<Account> {
+        Binding(
+            get: { self.accounts.first { $0.id == id } ?? Account(provider: .glm) },
+            set: { newValue in
+                var list = self.accounts
+                if let index = list.firstIndex(where: { $0.id == id }) {
+                    list[index] = newValue
+                    self.accounts = list
+                }
+            }
+        )
+    }
+
+    /// 旧版单 Key 配置迁移为账号列表（迁移后清空旧字段，避免重复迁移）
+    private func migrateLegacyKeys() {
+        guard accounts.isEmpty else { return }
+        var migrated: [Account] = []
+        let glmKey = legacyGLMKey.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !glmKey.isEmpty {
+            migrated.append(Account(provider: .glm, apiKey: glmKey, glmPlatform: legacyGLMPlatform))
         }
+        let kimiKey = legacyKimiKey.trimmingCharacters(in: .whitespacesAndNewlines)
+        if !kimiKey.isEmpty {
+            migrated.append(Account(provider: .kimi, apiKey: kimiKey))
+        }
+        guard !migrated.isEmpty else { return }
+        accounts = migrated
+        legacyGLMKey = ""
+        legacyKimiKey = ""
+    }
+
+    // MARK: - 派生状态
+
+    /// 已配置凭证的账号
+    var configuredAccounts: [Account] {
+        accounts.filter(\.isConfigured)
+    }
+
+    /// 实际参与监控与展示的账号（已配置 Key 且未被隐藏）
+    var monitoredAccounts: [Account] {
+        configuredAccounts.filter(\.isVisible)
     }
 
     var isOnline: Bool {
         lastRefresh != nil && errors.isEmpty
     }
 
-    /// 菜单栏显示文本：各供应商 5 小时窗口已用百分比
+    /// 面板显示名：优先用户备注名；同供应商多账号时自动编号
+    func displayName(for account: Account) -> String {
+        let name = account.name.trimmingCharacters(in: .whitespaces)
+        if !name.isEmpty { return name }
+        let siblings = configuredAccounts.filter { $0.provider == account.provider }
+        if siblings.count > 1, let index = siblings.firstIndex(where: { $0.id == account.id }) {
+            return "\(account.provider.displayName) \(index + 1)"
+        }
+        return account.provider.displayName
+    }
+
+    /// 菜单栏紧凑标签：备注名（取前 4 字）或供应商前缀 + 编号
+    func shortLabel(for account: Account) -> String {
+        let name = account.name.trimmingCharacters(in: .whitespaces)
+        if !name.isEmpty { return String(name.prefix(4)) }
+        let siblings = configuredAccounts.filter { $0.provider == account.provider }
+        if siblings.count > 1, let index = siblings.firstIndex(where: { $0.id == account.id }) {
+            return "\(account.provider.shortLabel)\(index + 1)"
+        }
+        return account.provider.shortLabel
+    }
+
+    /// 菜单栏显示文本：各账号 5 小时窗口已用百分比
     var menuBarTitle: String {
-        let providers = configuredProviders
-        guard !providers.isEmpty else { return "--" }
-        let parts = providers.compactMap { provider -> String? in
-            guard let p = usages[provider]?.fiveHour?.percentage else { return nil }
-            let value = providers.count > 1 ? "\(provider.shortLabel):\(Int(p))%" : "\(Int(p))%"
-            return value
+        let accounts = monitoredAccounts
+        guard !accounts.isEmpty else { return "--" }
+        let parts = accounts.compactMap { account -> String? in
+            guard let p = usages[account.id]?.fiveHour?.percentage else { return nil }
+            if accounts.count > 1 {
+                return "\(shortLabel(for: account)):\(Int(p))%"
+            }
+            return "\(Int(p))%"
         }
         return parts.isEmpty ? "--" : parts.joined(separator: " ")
     }
@@ -77,40 +158,124 @@ final class MonitorViewModel: ObservableObject {
         isLoading = true
         defer { isLoading = false }
 
-        async let glmResult: Result<ProviderUsage, Error>? = fetchIfConfigured(.glm)
-        async let kimiResult: Result<ProviderUsage, Error>? = fetchIfConfigured(.kimi)
+        let targets = monitoredAccounts
+        let validIDs = Set(targets.map(\.id))
 
-        for (provider, result) in [(.glm, await glmResult), (.kimi, await kimiResult)] as [(Provider, Result<ProviderUsage, Error>?)] {
-            guard let result else {
-                // 未配置 Key：清空旧数据与错误
-                usages[provider] = nil
-                errors[provider] = nil
-                continue
+        // 清理已删除账号的缓存
+        usages = usages.filter { validIDs.contains($0.key) }
+        errors = errors.filter { validIDs.contains($0.key) }
+
+        let results = await withTaskGroup(
+            of: (UUID, Result<ProviderUsage, Error>).self,
+            returning: [UUID: Result<ProviderUsage, Error>].self
+        ) { group in
+            for account in targets {
+                group.addTask {
+                    let result: Result<ProviderUsage, Error>
+                    do {
+                        result = .success(try await Self.fetch(account))
+                    } catch {
+                        result = .failure(error)
+                    }
+                    return (account.id, result)
+                }
             }
+            var collected: [UUID: Result<ProviderUsage, Error>] = [:]
+            for await (id, result) in group {
+                collected[id] = result
+            }
+            return collected
+        }
+
+        for (id, result) in results {
             switch result {
             case .success(let usage):
-                usages[provider] = usage
-                errors[provider] = nil
+                usages[id] = usage
+                errors[id] = nil
             case .failure(let error):
-                usages[provider] = nil
-                errors[provider] = message(for: error)
+                // Token 类供应商（Claude/Codex）：凭证过期时自动从本机重新导入并重试一次
+                if let account = targets.first(where: { $0.id == id }),
+                   let refreshed = Self.reimportCredentials(for: account) {
+                    do {
+                        let usage = try await Self.fetch(refreshed)
+                        persist(refreshed)
+                        usages[id] = usage
+                        errors[id] = nil
+                        continue
+                    } catch let retryError {
+                        usages[id] = nil
+                        errors[id] = message(for: retryError)
+                        continue
+                    }
+                }
+                usages[id] = nil
+                errors[id] = message(for: error)
             }
         }
         lastRefresh = Date()
     }
 
-    private func fetchIfConfigured(_ provider: Provider) async -> Result<ProviderUsage, Error>? {
-        let key = apiKey(for: provider).trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !key.isEmpty else { return nil }
-        do {
-            switch provider {
-            case .glm:
-                return .success(try await GLMService.fetch(apiKey: key, baseURL: glmBaseURL))
-            case .kimi:
-                return .success(try await KimiService.fetch(apiKey: key))
+    /// Claude/Codex 凭证自动续期：仅读取本地文件（不触发钥匙串弹窗）
+    private nonisolated static func reimportCredentials(for account: Account) -> Account? {
+        switch account.provider {
+        case .claude:
+            guard let token = LocalCredentialImporter.claudeOAuthToken(includeKeychain: false),
+                  token != account.apiKey else { return nil }
+            var updated = account
+            updated.apiKey = token
+            return updated
+        case .openai:
+            guard let credentials = LocalCredentialImporter.codexCredentials(),
+                  credentials.accessToken != account.apiKey else { return nil }
+            var updated = account
+            updated.apiKey = credentials.accessToken
+            if !credentials.accountId.isEmpty {
+                updated.secretKey = credentials.accountId
             }
-        } catch {
-            return .failure(error)
+            return updated
+        case .gemini:
+            guard let token = LocalCredentialImporter.geminiRefreshToken(),
+                  token != account.apiKey else { return nil }
+            var updated = account
+            updated.apiKey = token
+            return updated
+        default:
+            return nil
+        }
+    }
+
+    private func persist(_ account: Account) {
+        var list = accounts
+        if let index = list.firstIndex(where: { $0.id == account.id }) {
+            list[index] = account
+            accounts = list
+        }
+    }
+
+    private nonisolated static func fetch(_ account: Account) async throws -> ProviderUsage {
+        let key = account.apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
+        switch account.provider {
+        case .glm:
+            let baseURL = account.glmPlatform == "zai" ? "https://api.z.ai" : "https://open.bigmodel.cn"
+            return try await GLMService.fetch(apiKey: key, baseURL: baseURL)
+        case .kimi:
+            return try await KimiService.fetch(apiKey: key)
+        case .volcengine:
+            return try await VolcengineService.fetch(accessKey: key, secretKey: account.secretKey)
+        case .alibaba:
+            return try await AlibabaService.fetch(apiKey: key, region: account.region)
+        case .claude:
+            return try await ClaudeService.fetch(oauthToken: key)
+        case .openai:
+            return try await OpenAIService.fetch(accessToken: key, accountId: account.secretKey)
+        case .minimax:
+            return try await MiniMaxService.fetch(apiKey: key, region: account.region)
+        case .copilot:
+            return try await CopilotService.fetch(oauthToken: key)
+        case .gemini:
+            return try await GeminiService.fetch(refreshToken: key)
+        case .deepseek:
+            return try await DeepSeekService.fetch(apiKey: key)
         }
     }
 
@@ -174,12 +339,5 @@ final class MonitorViewModel: ObservableObject {
             return "\(hours) 小时 \(minutes) 分后重置"
         }
         return "\(minutes) 分后重置"
-    }
-}
-
-private extension Provider {
-    @MainActor
-    func apiKeyIsEmpty(_ vm: MonitorViewModel) -> Bool {
-        vm.apiKey(for: self).trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 }
