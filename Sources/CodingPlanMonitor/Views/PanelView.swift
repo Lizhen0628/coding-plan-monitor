@@ -45,6 +45,8 @@ struct PanelView: View {
                         }
                     }
                     .padding(.vertical, 4)
+                    // 给滚动条留出空间，避免与复制按钮等右侧控件贴在一起
+                    .padding(.trailing, 8)
                 }
                 .scrollBounceBehavior(.basedOnSize)
                 .frame(maxHeight: maxListHeight)
@@ -83,10 +85,10 @@ struct PanelView: View {
     }
 
     /// 账号列表最大高度：随屏幕可见高度调整，
-    /// 头部/状态栏/按钮区约 180pt，底部留边距，防止展开过多时超出屏幕
+    /// 头部/状态栏/按钮区约 160pt，底部留边距，防止展开过多时超出屏幕
     private var maxListHeight: CGFloat {
-        let screenHeight = NSScreen.main?.visibleFrame.height ?? 800
-        return max(200, min(520, screenHeight - 220))
+        let screenHeight = NSScreen.main?.visibleFrame.height ?? 900
+        return max(240, min(860, screenHeight - 120))
     }
 
     // MARK: - 头部
@@ -298,9 +300,15 @@ private struct AccountRow: View {
                             MCPRow(usage: mcp)
                         }
                     }
+
+                    CopyKeyRow(label: account.provider.credentialLabels.primary, key: account.apiKey)
+                    if let secondaryLabel = account.provider.credentialLabels.secondary,
+                       !account.secretKey.isEmpty {
+                        CopyKeyRow(label: secondaryLabel, key: account.secretKey)
+                    }
+                    Divider()
                 }
-                .padding(.leading, 38)
-                .padding(.trailing, 8)
+                .padding(.horizontal, 8)
                 .padding(.top, 6)
                 .padding(.bottom, 8)
                 .transition(.opacity.combined(with: .move(edge: .top)))
@@ -454,6 +462,57 @@ private struct BalanceRow: View {
             Text("\(balance.symbol)\(balance.total, specifier: "%.2f")")
                 .font(.callout.weight(.medium).monospacedDigit())
                 .foregroundStyle(balance.total > 0 ? .primary : Color.red)
+        }
+    }
+}
+
+// MARK: - 复制密钥行
+
+private struct CopyKeyRow: View {
+    let label: String
+    let key: String
+
+    @State private var copied = false
+    @State private var hovering = false
+
+    private var trimmedKey: String {
+        key.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    /// 脱敏显示：前 3 位 + *** + 后 3 位
+    private var maskedKey: String {
+        guard trimmedKey.count > 6 else { return trimmedKey.isEmpty ? "未设置" : "***" }
+        return "\(trimmedKey.prefix(3))***\(trimmedKey.suffix(3))"
+    }
+
+    var body: some View {
+        HStack(spacing: 8) {
+            Label(label, systemImage: "key")
+                .font(.callout)
+            Spacer()
+            Text(maskedKey)
+                .font(.system(size: 10, design: .monospaced))
+                .foregroundStyle(.secondary)
+            Button {
+                guard !trimmedKey.isEmpty else { return }
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString(trimmedKey, forType: .string)
+                withAnimation { copied = true }
+                Task { @MainActor in
+                    try? await Task.sleep(for: .seconds(1.5))
+                    withAnimation { copied = false }
+                }
+            } label: {
+                Image(systemName: copied ? "checkmark" : "doc.on.doc")
+                    .font(.caption)
+                    .foregroundStyle(copied ? Color.green : Color.secondary)
+                    .frame(width: 22, height: 18)
+                    .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .disabled(trimmedKey.isEmpty)
+            .help(copied ? "已复制" : "复制\(label)")
+            .onHover { hovering = $0 }
         }
     }
 }

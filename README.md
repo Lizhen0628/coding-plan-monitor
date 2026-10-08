@@ -45,3 +45,12 @@ open "Coding Plan Monitor.app"
 ```
 
 首次打开后，点击菜单栏图标 → 设置…，填入对应供应商的 API Key 即可（可只填一个，也可两个都填）。
+
+## Windows 版
+
+功能等价的 Windows 移植版（C# / WPF 系统托盘应用）位于 [`windows/`](windows/README.md)，使用相同的数据接口与解析逻辑。在 Windows 上安装 .NET 8 SDK 后：
+
+```powershell
+cd windows
+.\build-app.ps1   # 输出 artifacts\CodingPlanMonitor.exe（单文件自包含）
+```

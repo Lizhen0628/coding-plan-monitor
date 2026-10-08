@@ -132,16 +132,18 @@ struct SettingsView: View {
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
-                Link(account.provider == .copilot ? "查看用量与订阅 →" : "获取 API Key →", destination: account.provider.keyHelpURL)
+                Text("在 \(account.provider.displayName) 控制台获取凭证后粘贴到上方")
                     .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
         case .akSK:
             Section("访问凭证（AK/SK）") {
                 SecureField("AccessKey ID", text: binding.apiKey, prompt: Text("AKLT…"))
                 SecureField("Secret Access Key", text: binding.secretKey, prompt: Text("从 IAM 控制台获取"))
-                Link("获取 AK/SK →", destination: account.provider.keyHelpURL)
+                Text("在 \(account.provider.displayName) 控制台创建 AK/SK 后粘贴到上方")
                     .font(.caption)
+                    .foregroundStyle(.secondary)
             }
 
         case .claudeOAuth:
@@ -249,6 +251,12 @@ struct SettingsView: View {
             }
             Section("刷新") {
                 Stepper("自动刷新间隔：\(vm.refreshMinutes) 分钟", value: $vm.refreshMinutes, in: 1...60)
+            }
+            Section {
+                Text("京ICP备2026039913号-2A")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
         }
         .formStyle(.grouped)

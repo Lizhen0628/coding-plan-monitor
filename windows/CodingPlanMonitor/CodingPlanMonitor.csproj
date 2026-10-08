@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>CodingPlanMonitor</AssemblyName>
+    <RootNamespace>CodingPlanMonitor</RootNamespace>
+    <AssemblyTitle>Coding Plan Monitor</AssemblyTitle>
+    <Product>Coding Plan Monitor</Product>
+    <Description>监控各 AI Coding Plan 额度（Windows 系统托盘版）</Description>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+</Project>

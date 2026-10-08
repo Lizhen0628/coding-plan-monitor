@@ -34,7 +34,8 @@ func drawShadowed(_ img: NSImage, in rect: NSRect, radius: CGFloat = 18) {
     shadow.shadowBlurRadius = radius
     shadow.shadowOffset = NSSize(width: 0, height: -6)
     shadow.set()
-    NSColor.white.setFill()
+    // 深色底衬，避免深色窗口圆角处透出白边
+    NSColor(srgbRed: 0.13, green: 0.13, blue: 0.14, alpha: 1).setFill()
     NSBezierPath(roundedRect: rect, xRadius: 12, yRadius: 12).fill()
     NSGraphicsContext.current?.restoreGraphicsState()
     img.draw(in: rect)
@@ -52,44 +53,20 @@ func savePNG(_ image: NSImage, to path: String) {
 
 let fm = FileManager.default
 let root = fm.currentDirectoryPath
-let panel = NSImage(contentsOfFile: "\(root)/images/monitor panel.png")!
-let settings = NSImage(contentsOfFile: "\(root)/images/settings.png")!
-let menu = NSImage(contentsOfFile: "\(root)/images/menu.png")!
+let panel = NSImage(contentsOfFile: "\(root)/images/panel.png")!
+let panelExpand = NSImage(contentsOfFile: "\(root)/images/panel-expand.png")!
+let settingsAccounts = NSImage(contentsOfFile: "\(root)/images/setting-remove-url.png")!
+let settingsGeneral = NSImage(contentsOfFile: "\(root)/images/settings-general.png")!
 
-// 1. 菜单栏 + 监控面板
-let shot1 = makeCanvas { canvas in
-    // 顶部菜单栏条带，拉满画布宽度
-    let menuH = menu.size.height * (canvas.width / menu.size.width)
-    menu.draw(in: NSRect(x: 0, y: canvas.height - menuH, width: canvas.width, height: menuH))
-    let rect = centeredRect(fit: panel.size, maxHeight: 700, yOffset: -20)
-    drawShadowed(panel, in: rect)
-}
-
-// 2. 设置窗口
-let shot2 = makeCanvas { _ in
-    let rect = centeredRect(fit: settings.size, maxHeight: 700)
-    drawShadowed(settings, in: rect)
-}
-
-// 3. 菜单栏状态特写（右侧 G:0% K:3% 区域放大）
-let shot3 = makeCanvas { canvas in
-    let cropW: CGFloat = 420
-    let srcRect = NSRect(x: menu.size.width - cropW, y: 0, width: cropW, height: menu.size.height)
-    let w: CGFloat = 900, h = w * (menu.size.height / cropW)
-    let dest = NSRect(x: (canvas.width - w) / 2, y: (canvas.height - h) / 2, width: w, height: h)
-    NSGraphicsContext.current?.saveGraphicsState()
-    let shadow = NSShadow()
-    shadow.shadowColor = NSColor.black.withAlphaComponent(0.6)
-    shadow.shadowBlurRadius = 12
-    shadow.shadowOffset = NSSize(width: 0, height: -4)
-    shadow.set()
-    NSColor(calibratedRed: 0.15, green: 0.16, blue: 0.19, alpha: 1).setFill()
-    NSBezierPath(roundedRect: dest.insetBy(dx: -30, dy: -30), xRadius: 16, yRadius: 16).fill()
-    NSGraphicsContext.current?.restoreGraphicsState()
-    menu.draw(in: dest, from: srcRect, operation: .sourceOver, fraction: 1)
+// 素材本身已含菜单栏/桌面背景，直接居中加阴影贴到渐变画布上
+func shot(_ img: NSImage, maxHeight: CGFloat = 720) -> NSImage {
+    makeCanvas { _ in
+        drawShadowed(img, in: centeredRect(fit: img.size, maxHeight: maxHeight))
+    }
 }
 
 try? fm.createDirectory(atPath: "\(root)/images/appstore", withIntermediateDirectories: true)
-savePNG(shot1, to: "\(root)/images/appstore/screenshot-1-panel.png")
-savePNG(shot2, to: "\(root)/images/appstore/screenshot-2-settings.png")
-savePNG(shot3, to: "\(root)/images/appstore/screenshot-3-menubar.png")
+savePNG(shot(panel), to: "\(root)/images/appstore/screenshot-1-panel.png")
+savePNG(shot(panelExpand), to: "\(root)/images/appstore/screenshot-2-panel-expand.png")
+savePNG(shot(settingsAccounts), to: "\(root)/images/appstore/screenshot-3-settings-accounts.png")
+savePNG(shot(settingsGeneral), to: "\(root)/images/appstore/screenshot-4-settings-general.png")

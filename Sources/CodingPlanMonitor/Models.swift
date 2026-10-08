@@ -97,6 +97,17 @@ enum Provider: String, CaseIterable, Codable {
         }
     }
 
+    /// 凭证展示标签（复制密钥行用）；secondary 仅火山/Codex 等双凭证供应商有值
+    var credentialLabels: (primary: String, secondary: String?) {
+        switch self {
+        case .volcengine: return ("AccessKey", "Secret Access Key")
+        case .openai: return ("Access Token", "Account ID")
+        case .claude, .copilot: return ("OAuth Token", nil)
+        case .gemini: return ("Refresh Token", nil)
+        default: return ("API Key", nil)
+        }
+    }
+
     /// 区域选项（多区域供应商）
     var regionOptions: [(value: String, label: String)]? {
         switch self {

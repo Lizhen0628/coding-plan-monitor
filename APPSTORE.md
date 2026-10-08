@@ -74,11 +74,15 @@
 
 ## 描述草稿
 
-> Coding Plan Monitor 是一款 macOS 菜单栏工具，帮你随时查看 GLM / Kimi Coding Plan 的额度使用情况：
-> • 5 小时与每周 Token 额度：百分比、进度条、重置倒计时
-> • 每月总额度与 MCP 每月调用次数
-> • 自动刷新，额度告急一目了然
-> 需要 GLM 或 Kimi Coding Plan 订阅及 API Key 才能使用。
+> 把 Coding 订阅的用量钉在菜单栏上。
+>
+> Coding Plan Monitor 是一款 macOS 菜单栏工具，实时监控你的 AI 编程订阅额度，支持 GLM Coding、Kimi Coding、DeepSeek 多账号同时管理。
+> • 用量一览：5 小时与每周额度百分比、进度条、重置倒计时；每月额度与 MCP 调用次数；DeepSeek 余额
+> • 多账号管理：按供应商分组，单独备注名与显示开关
+> • 自动刷新：默认 5 分钟，可自定义；⌘R 手动刷新
+> • 隐私优先：不收集任何数据，API Key 仅存本机
+>
+> 需要 GLM Coding、Kimi Coding 或 DeepSeek 的订阅账号及 API Key 才能使用。
 
 ## 注意
 
