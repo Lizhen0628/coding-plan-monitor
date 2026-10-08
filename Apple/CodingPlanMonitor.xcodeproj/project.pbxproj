@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		070B9F75523052994FD9FC8B /* GeminiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91C0FFA8D441F7321E58D91E /* GeminiService.swift */; };
+		07A37CCABD56571932FCA911 /* RegionPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A5B5ACB752E84F2950D1704 /* RegionPolicy.swift */; };
 		10ABACAB9A9AAC70CDAE5F98 /* VolcengineSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8A7A69D3EB8AF1278E22DE /* VolcengineSigner.swift */; };
 		112402CBE6D9B28D3C05D65F /* CodingPlanMonitorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB57D94BA1E3D4F3EC3CB40 /* CodingPlanMonitorApp.swift */; };
 		121AFBB4F87E43BF5A883A24 /* VolcengineSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8A7A69D3EB8AF1278E22DE /* VolcengineSigner.swift */; };
@@ -129,6 +130,7 @@
 		91C0FFA8D441F7321E58D91E /* GeminiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeminiService.swift; sourceTree = "<group>"; };
 		9851985A0233D0122E4408E4 /* LiveActivityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivityManager.swift; sourceTree = "<group>"; };
 		98DBE7F0B84E02EBA005590C /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
+		9A5B5ACB752E84F2950D1704 /* RegionPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionPolicy.swift; sourceTree = "<group>"; };
 		AAB9F7634C9A5B467F728A8D /* AccountEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountEditView.swift; sourceTree = "<group>"; };
 		AF2A4925406054BB0DC2CF68 /* CodingPlanMonitor-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "CodingPlanMonitor-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5CD76BB46D56E782693F95A /* QuotaLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotaLiveActivity.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				7E830EEB4032CE43B87070F5 /* KeychainStore.swift */,
 				9851985A0233D0122E4408E4 /* LiveActivityManager.swift */,
 				E91D0AF6D2318512AE8A9762 /* NotificationManager.swift */,
+				9A5B5ACB752E84F2950D1704 /* RegionPolicy.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				6CDEEA79567BF0ED8B4BAE88 /* OpenAIService.swift in Sources */,
 				382881704082109E93C28EAB /* QuotaActivityAttributes.swift in Sources */,
 				32A883D89CB410315E9D6317 /* QuotaServiceError.swift in Sources */,
+				07A37CCABD56571932FCA911 /* RegionPolicy.swift in Sources */,
 				8A898CAF2E5E911179C251AB /* ShareCard.swift in Sources */,
 				E674A4C5DA8A649A0268B49A /* SharedViews.swift in Sources */,
 				C56746CF3AD08F6C62223A19 /* Theme.swift in Sources */,
@@ -530,7 +534,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOS/Entitlements/CodingPlanMonitor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2CV6VKVD26;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "iOS/Configuration/CodingPlanMonitor-Info.plist";
@@ -555,7 +559,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOS/Entitlements/CodingPlanMonitor.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2CV6VKVD26;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "iOS/Configuration/CodingPlanMonitor-Info.plist";
@@ -664,7 +668,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOS/Entitlements/UsageWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2CV6VKVD26;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "iOS/Configuration/UsageWidget-Info.plist";
@@ -685,7 +689,7 @@
 				CODE_SIGN_ENTITLEMENTS = iOS/Entitlements/UsageWidget.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 2CV6VKVD26;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = "iOS/Configuration/UsageWidget-Info.plist";

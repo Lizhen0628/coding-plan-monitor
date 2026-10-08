@@ -55,7 +55,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.lizhen.CodingPlanMonitor
         PRODUCT_NAME: Coding Plan Monitor
         MARKETING_VERSION: "1.0"
-        CURRENT_PROJECT_VERSION: "2"
+        CURRENT_PROJECT_VERSION: "3"
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: iOS/Configuration/CodingPlanMonitor-Info.plist
         CODE_SIGN_ENTITLEMENTS: iOS/Entitlements/CodingPlanMonitor.entitlements
@@ -83,7 +83,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.lizhen.CodingPlanMonitor.UsageWidget
         PRODUCT_NAME: UsageWidget
         MARKETING_VERSION: "1.0"
-        CURRENT_PROJECT_VERSION: "2"
+        CURRENT_PROJECT_VERSION: "3"
         GENERATE_INFOPLIST_FILE: NO
         INFOPLIST_FILE: iOS/Configuration/UsageWidget-Info.plist
         CODE_SIGN_ENTITLEMENTS: iOS/Entitlements/UsageWidget.entitlements

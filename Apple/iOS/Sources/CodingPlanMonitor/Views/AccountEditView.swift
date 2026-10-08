@@ -163,7 +163,7 @@ struct AccountEditView: View {
     private var providerPicker: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                ForEach(Provider.allCases, id: \.rawValue) { candidate in
+                ForEach(vm.availableProviders, id: \.rawValue) { candidate in
                     let isSelected = candidate == provider
                     Button {
                         withAnimation(.easeInOut(duration: 0.15)) { provider = candidate }

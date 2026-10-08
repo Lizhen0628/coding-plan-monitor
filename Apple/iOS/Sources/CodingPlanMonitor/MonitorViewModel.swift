@@ -21,6 +21,8 @@ final class MonitorViewModel: ObservableObject {
     @Published private(set) var refreshMinutes: Int {
         didSet { UserDefaults.standard.set(refreshMinutes, forKey: "refreshMinutes") }
     }
+    /// 中国大陆合规：店面校正后刷新，停用无许可的境外供应商
+    @Published private(set) var isChinaMainland = RegionPolicy.isChinaMainland
 
     private let cloudSync = CloudSyncManager()
 
@@ -29,6 +31,11 @@ final class MonitorViewModel: ObservableObject {
         let stored = UserDefaults.standard.integer(forKey: "refreshMinutes")
         refreshMinutes = stored > 0 ? stored : 5
         Self.current = self
+
+        Task {
+            await RegionPolicy.refreshFromStorefront()
+            isChinaMainland = RegionPolicy.isChinaMainland
+        }
 
         migrateCredentialsToKeychainIfNeeded()
 
@@ -153,9 +160,16 @@ final class MonitorViewModel: ObservableObject {
         accounts.filter(\.isConfigured)
     }
 
-    /// 实际参与监控与展示的账号（已配置 Key 且未被隐藏）
+    /// 实际参与监控与展示的账号（已配置 Key 且未被隐藏；中国大陆停用的供应商一并排除）
     var monitoredAccounts: [Account] {
-        configuredAccounts.filter(\.isVisible)
+        configuredAccounts.filter { account in
+            account.isVisible && !(isChinaMainland && account.provider.suppressedInChinaMainland)
+        }
+    }
+
+    /// 添加账号时可选的供应商列表（中国大陆隐藏停用的供应商）
+    var availableProviders: [Provider] {
+        Provider.allCases.filter { !($0.suppressedInChinaMainland && isChinaMainland) }
     }
 
     var isOnline: Bool {

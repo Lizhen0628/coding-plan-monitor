@@ -78,6 +78,12 @@ enum Provider: String, CaseIterable, Codable {
         }
     }
 
+    /// 中国大陆区合规：无 MIIT 生成式 AI 服务许可的境外供应商，
+    /// 设备地区/店面为中国大陆时不可选用（Guideline 5 - Legal）
+    var suppressedInChinaMainland: Bool {
+        self == .openai
+    }
+
     /// 凭证形态
     enum CredentialKind {
         case apiKey            // 单个 API Key
