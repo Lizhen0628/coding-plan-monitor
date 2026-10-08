@@ -62,6 +62,22 @@ enum Provider: String, CaseIterable, Codable {
         }
     }
 
+    /// 徽标颜色的十六进制（供小组件快照跨进程还原颜色）
+    var tintHex: String {
+        switch self {
+        case .glm: return "#5856D6"
+        case .kimi: return "#007AFF"
+        case .volcengine: return "#FF3B30"
+        case .alibaba: return "#AF52DE"
+        case .claude: return "#FF9500"
+        case .openai: return "#34C759"
+        case .minimax: return "#32ADE6"
+        case .copilot: return "#8E8E93"
+        case .gemini: return "#30B0C7"
+        case .deepseek: return "#FF2D55"
+        }
+    }
+
     /// 凭证形态
     enum CredentialKind {
         case apiKey            // 单个 API Key

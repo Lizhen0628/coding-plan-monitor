@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "61659C13C02CBA6E11F95711"
-               BuildableName = "CodingPlanMonitor.app"
-               BlueprintName = "CodingPlanMonitor"
+               BlueprintIdentifier = "4F7039B115A2FAE8BF130751"
+               BuildableName = "CodingPlanMonitor-iOS.app"
+               BlueprintName = "CodingPlanMonitor-iOS"
                ReferencedContainer = "container:CodingPlanMonitor.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,16 +32,14 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61659C13C02CBA6E11F95711"
-            BuildableName = "CodingPlanMonitor.app"
-            BlueprintName = "CodingPlanMonitor"
+            BlueprintIdentifier = "4F7039B115A2FAE8BF130751"
+            BuildableName = "CodingPlanMonitor-iOS.app"
+            BlueprintName = "CodingPlanMonitor-iOS"
             ReferencedContainer = "container:CodingPlanMonitor.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
       </Testables>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -57,14 +55,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61659C13C02CBA6E11F95711"
-            BuildableName = "CodingPlanMonitor.app"
-            BlueprintName = "CodingPlanMonitor"
+            BlueprintIdentifier = "4F7039B115A2FAE8BF130751"
+            BuildableName = "CodingPlanMonitor-iOS.app"
+            BlueprintName = "CodingPlanMonitor-iOS"
             ReferencedContainer = "container:CodingPlanMonitor.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -76,14 +72,12 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "61659C13C02CBA6E11F95711"
-            BuildableName = "CodingPlanMonitor.app"
-            BlueprintName = "CodingPlanMonitor"
+            BlueprintIdentifier = "4F7039B115A2FAE8BF130751"
+            BuildableName = "CodingPlanMonitor-iOS.app"
+            BlueprintName = "CodingPlanMonitor-iOS"
             ReferencedContainer = "container:CodingPlanMonitor.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <CommandLineArguments>
-      </CommandLineArguments>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

@@ -1,0 +1,52 @@
+============================================================
+Coding Plan Monitor (iOS) — App Store 商店文案
+Bundle ID: com.lizhen.CodingPlanMonitor
+============================================================
+
+【推广文本】（170 字符以内，无需发版即可随时修改）
+------------------------------------------------------------
+10 家 AI 编程订阅的额度，一屏掌握。主屏小组件 + 灵动岛倒计时，额度告急早知道。
+
+
+【描述】
+------------------------------------------------------------
+把 AI 编程订阅的额度装进口袋。
+
+Coding Plan Monitor 实时监控你的 Coding 订阅用量，支持 GLM Coding、Kimi Coding、Claude Code、OpenAI Codex、火山引擎、通义、MiniMax、GitHub Copilot、Gemini CLI、DeepSeek 共 10 家供应商，多账号同时管理。
+
+• 用量一览：5 小时 / 每周 / 每月额度圆环与进度条、重置倒计时、MCP 调用次数、DeepSeek 余额
+• 主屏幕小组件 + 灵动岛：额度告急时锁屏常驻倒计时
+• 智能提醒：用量超 80% / 95% 告警、重置完成通知、每周用量报告、余额预警
+• 用量趋势：历史曲线与一键分享卡片
+• iCloud 同步：账号配置与凭证在 iPhone / iPad / Mac 间自动同步
+• 隐私优先：不收集任何数据，凭证仅存储于本机 Keychain
+
+需要相应平台的订阅账号及 API Key / OAuth Token 才能使用。
+
+
+【关键词】（100 字符以内，逗号分隔，不要空格）
+------------------------------------------------------------
+Claude,GLM,Kimi,额度,用量,Coding,AI编程,DeepSeek,Copilot,Gemini,订阅监控
+
+
+============================================================
+附：审核备注建议（App Review Information → Notes）
+------------------------------------------------------------
+中文说明：
+本 App 是面向开发者的用量监控工具，需要用户在「账号」页自行填入各平台
+的 API Key / OAuth Token 后才能展示用量数据，首次打开的空态页面为预期
+行为。附上测试用 API Key（GLM Coding）：<在此粘贴测试 Key>
+操作路径：账号 → 右上角 + → 选择 GLM Coding → 粘贴 Key → 保存 → 回到
+「用量」页即可看到额度圆环、重置倒计时与趋势曲线。
+
+English version:
+This app is a developer utility that monitors AI coding plan quotas. It
+requires the user to enter their own API Key / OAuth Token in the Accounts
+tab before any usage data can be shown; the empty state on first launch is
+expected behavior. A test API Key (GLM Coding) is provided below:
+- glm key: 587537a892744d0eaab7b158141d7491.9SjjmzdKnQN02IGe
+- kimi key: sk-kimi-g4XwbP0q51goWEzY7CPyecwdvqb0GbCkUIDAJaP7ECMpE20EroR3QLymcrZRR2Es
+
+
+Steps: Accounts → + → GLM Coding → paste the key → Save → switch back to
+the Usage tab to see quota rings, reset countdowns and trend curves.

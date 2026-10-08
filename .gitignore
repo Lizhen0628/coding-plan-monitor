@@ -19,3 +19,7 @@ xcuserdata/
 windows/artifacts/
 windows/**/bin/
 windows/**/obj/
+
+# iOS 导出产物
+*.ipa
+*.dSYM.zip
